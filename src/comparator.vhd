@@ -19,7 +19,7 @@ BEGIN
     PROCESS (a, b)
     BEGIN
         less <= '0';
-        correct <= '0';
+        equal <= '0';
         upper <= '0';
 
         IF b < a THEN

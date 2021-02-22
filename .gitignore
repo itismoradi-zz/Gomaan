@@ -1,1 +1,5 @@
 desktop.ini
+work/
+*.mti
+*.mpf
+*.bak
