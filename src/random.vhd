@@ -1,24 +1,23 @@
-LIBRARY IEEE;
-USE IEEE.STD_LOGIC_1164.ALL;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY random IS
-    PORT (
-        clk : IN STD_LOGIC;
-        output : OUT STD_LOGIC_VECTOR (3 DOWNTO 0));
-END random;
+entity random is
+    Port ( clk : in  STD_LOGIC;
+           output : out  STD_LOGIC_VECTOR (3 downto 0));
+end random;
 
-ARCHITECTURE Behavioral OF random IS
-    SIGNAL a : STD_LOGIC_VECTOR (3 DOWNTO 0) := b"1100";
+architecture Behavioral of random is
+	signal a:STD_LOGIC_VECTOR (3 downto 0):=b"1100"; -- shift  -- shift -- 1100 --> 0110 --> 0011 -> 1001 
+begin
+	output<=a;
+	process(clk)
+	begin
+		if clk='1' then
+			a(3)<=a(2) xor a(0);
+			a(2)<=a(3);
+			a(1)<=a(2);
+			a(0)<=a(1);
+		end if;
+	end process;
+end Behavioral;
 
-BEGIN
-    output <= a;
-    PROCESS (clk)
-    BEGIN
-        IF clk = '1' THEN
-            a(3) <= a(2) XOR a(0);
-            a(2) <= a(3);
-            a(1) <= a(2);
-            a(0) <= a(1);
-        END IF;
-    END PROCESS;
-END Behavioral;
